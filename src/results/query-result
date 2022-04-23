@@ -1,0 +1,145 @@
+SELECT sentiment, created, count(1) FROM summary_2021_01 WHERE created='2021-01-01' GROUP BY sentiment, created ALLOW FILTERING USING TIMEOUT 240s;
+
+ sentiment | created    | country | count
+-----------+------------+---------+---------
+  positive | 2021-01-01 |         |  371966
+  negative | 2021-01-01 |         | 1179204
+   neutral | 2021-01-01 |         | 1146081
+
+
+cqlsh:twitter> select sentiment, created, language, country,count(1) from summary where language='en' and country in ('US', '')  group by sentiment, created, country allow filtering;
+
+ sentiment | created    | language | country | count
+-----------+------------+----------+---------+--------
+   neutral | 2022-03-31 |       en |         | 497407
+   neutral | 2022-03-31 |       en |      US |    693
+  positive | 2022-03-31 |       en |         | 118686
+  positive | 2022-03-31 |       en |      US |    489
+  negative | 2022-03-31 |       en |         | 472933
+  negative | 2022-03-31 |       en |      US |   1228
+
+(3 rows)
+select sentiment, created, language, country,count(1) from summary where language='en' and country = '' and ner_text contains 'us' group by sentiment, created, country allow filtering;
+
+ sentiment | created    | language | country | count
+-----------+------------+----------+---------+-------
+   neutral | 2022-03-31 |       en |         |  6222
+  positive | 2022-03-31 |       en |         |   906
+  negative | 2022-03-31 |       en |         |  7030
+
+select sentiment, created, language, country,count(1) from summary where language='en' and country = '' and ner_text contains 'us' and ner_text contains 'covid' group by sentiment, created, country allow filtering;
+
+
+
+1345399450756411392,covid,18,23,ORG,0.6829
+
+Die Analysen zeogen die hohe Korrelation zwischen den auf Twitter geposteten Informationen
+über die Entwicklung einer Epidemie und den offiziellen Daten
+die vom Center for Disease Control and Prevention veröffentlicht werden.
+
+
+1) https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9354776
+
+
+SELECT sentiment, created, language, country, count(1) FROM summary WHERE created='2021-01-10' GROUP BY sentiment, created ALLOW FILTERING USING TIMEOUT 240s;
+
+
+SELECT sentiment, created, count(1) FROM summary_2021_01 WHERE created='2021-01-09' GROUP BY sentiment, created ALLOW FILTERING USING TIMEOUT 240s;
+
+
+SELECT sentiment, created, country, count(1) FROM summary_2021_01 WHERE country='US' GROUP BY sentiment, created ALLOW FILTERING USING TIMEOUT 240s;
+ sentiment | created    | country | count
+-----------+------------+---------+-------
+  positive | 2021-01-29 |      US |  1958
+   neutral | 2021-01-09 |      US |  2310
+  positive | 2021-01-01 |      US |  3357
+  positive | 2021-01-16 |      US |  1966
+   neutral | 2021-01-25 |      US |  2928
+  positive | 2021-01-24 |      US |  1839
+   neutral | 2021-01-24 |      US |  2609
+  positive | 2021-01-12 |      US |  2155
+  negative | 2021-01-13 |      US |  4503
+  negative | 2021-01-28 |      US |  3966
+  positive | 2021-01-23 |      US |  2019
+  negative | 2021-01-02 |      US |  5426
+   neutral | 2021-01-29 |      US |  2811
+  negative | 2021-01-25 |      US |  4356
+  negative | 2021-01-30 |      US |  4274
+  negative | 2021-01-14 |      US |  3631
+  positive | 2021-01-02 |      US |  1966
+  negative | 2021-01-12 |      US |  5322
+  negative | 2021-01-01 |      US |  5636
+  negative | 2021-01-26 |      US |  4389
+  positive | 2021-01-17 |      US |  1766
+   neutral | 2021-01-04 |      US |  2498
+   neutral | 2021-01-27 |      US |  2940
+  negative | 2021-01-03 |      US |  5334
+   neutral | 2021-01-01 |      US |  3059
+   neutral | 2021-01-23 |      US |  2836
+  negative | 2021-01-23 |      US |  4496
+  negative | 2021-01-27 |      US |  4462
+  positive | 2021-01-14 |      US |  1845
+  negative | 2021-01-31 |      US |  4348
+   neutral | 2021-01-13 |      US |  2821
+  positive | 2021-01-18 |      US |  1583
+   neutral | 2021-01-02 |      US |  2722
+  negative | 2021-01-08 |      US |  4221
+  negative | 2021-01-06 |      US |  5854
+   neutral | 2021-01-16 |      US |  2626
+   neutral | 2021-01-30 |      US |  2925
+   neutral | 2021-01-28 |      US |  2751
+  positive | 2021-01-25 |      US |  1914
+   neutral | 2021-01-21 |      US |  2825
+  negative | 2021-01-29 |      US |  3895
+  positive | 2021-01-06 |      US |  2275
+   neutral | 2021-01-14 |      US |  2698
+   neutral | 2021-01-07 |      US |  2519
+  negative | 2021-01-22 |      US |  4713
+   neutral | 2021-01-26 |      US |  3025
+  positive | 2021-01-08 |      US |  1799
+  positive | 2021-01-03 |      US |  1772
+   neutral | 2021-01-08 |      US |  2535
+  positive | 2021-01-28 |      US |  1921
+  negative | 2021-01-24 |      US |  4049
+   neutral | 2021-01-22 |      US |  3066
+  positive | 2021-01-13 |      US |  1915
+  positive | 2021-01-31 |      US |  1832
+  positive | 2021-01-07 |      US |  1579
+   neutral | 2021-01-05 |      US |  3077
+  negative | 2021-01-04 |      US |  4251
+   neutral | 2021-01-06 |      US |  3370
+  negative | 2021-01-18 |      US |  3924
+  negative | 2021-01-09 |      US |  3786
+   neutral | 2021-01-11 |      US |  2579
+  negative | 2021-01-19 |      US |  4097
+  positive | 2021-01-26 |      US |  2128
+   neutral | 2021-01-10 |      US |  2083
+  positive | 2021-01-10 |      US |  1549
+   neutral | 2021-01-19 |      US |  2739
+  positive | 2021-01-20 |      US |  2557
+   neutral | 2021-01-20 |      US |  2973
+  negative | 2021-01-17 |      US |  4219
+  positive | 2021-01-19 |      US |  2118
+   neutral | 2021-01-17 |      US |  2428
+   neutral | 2021-01-18 |      US |  2247
+  positive | 2021-01-05 |      US |  1984
+  positive | 2021-01-09 |      US |  1856
+   neutral | 2021-01-15 |      US |  2469
+  negative | 2021-01-21 |      US |  4510
+   neutral | 2021-01-03 |      US |  2677
+  negative | 2021-01-20 |      US |  4261
+  negative | 2021-01-11 |      US |  3393
+   neutral | 2021-01-12 |      US |  3232
+  negative | 2021-01-15 |      US |  3770
+  negative | 2021-01-05 |      US |  5374
+  negative | 2021-01-16 |      US |  4354
+  negative | 2021-01-10 |      US |  3556
+  positive | 2021-01-22 |      US |  2156
+  negative | 2021-01-07 |      US |  4329
+  positive | 2021-01-11 |      US |  1520
+  positive | 2021-01-27 |      US |  2100
+  positive | 2021-01-21 |      US |  2097
+  positive | 2021-01-04 |      US |  1639
+   neutral | 2021-01-31 |      US |  2617
+  positive | 2021-01-30 |      US |  2114
+  positive | 2021-01-15 |      US |  1767
