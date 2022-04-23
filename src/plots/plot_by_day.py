@@ -53,16 +53,16 @@ def plot_correlation(year='', month=''):
         dfl = dfl[dfl.year == int(year)]
     if month:
         dfl = dfl[dfl.month == int(month)]
-    plot = ggplot(dfl, aes("number_of_tweets", y="daily_death_cases")) + \
-           geom_point(aes(color="number_of_tweets", fill="number_of_tweets"), shape=21, size=3, alpha=.2) + \
-           scale_color_gradient(low='#abd9e9', high='#d7191c') + \
-           scale_fill_gradient(low='#abd9e9', high='#d7191c') + \
-           facet_grid(x='month', y='year') + \
-           xlab('Monat') + ylab('Jahr') + \
-           ggtitle("Relation Between 'number_of_tweets' and 'daily_death_cases'") + \
-           ggsize(1800, 1000) + \
-           theme_classic() + theme(legend_position='bottom')
-    plot.show()
+    p1 = ggplot(dfl, aes("number_of_tweets", y="daily_death_cases")) + \
+         geom_point(aes(color="number_of_tweets", fill="number_of_tweets"), shape=21, size=3, alpha=.2) + \
+         scale_color_gradient(low='#abd9e9', high='#d7191c') + \
+         scale_fill_gradient(low='#abd9e9', high='#d7191c') + \
+         facet_grid(x='month', y='year') + \
+         xlab('Monat') + ylab('Jahr') + \
+         ggtitle("Relation Between 'number_of_tweets' and 'daily_death_cases'") + \
+         ggsize(1800, 1000) + \
+         theme_classic() + theme(legend_position='bottom')
+    p1.show()
 
 
 def calculate_and_plot(year='', month=''):
