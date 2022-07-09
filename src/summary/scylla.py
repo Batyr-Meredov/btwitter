@@ -1,6 +1,5 @@
 import time
 import numpy as np
-from datetime import datetime
 from cassandra import ConsistencyLevel
 from cassandra.query import BatchStatement, tuple_factory
 from cassandra.cluster import Cluster, ExecutionProfile, EXEC_PROFILE_DEFAULT
@@ -21,6 +20,8 @@ class ScyllaAdapter:
         self.cluster = Cluster(execution_profiles={EXEC_PROFILE_DEFAULT: profile})
         self.session = self.cluster.connect(keyspace="twitter", wait_for_all_pools=False)
         self.CASSANDRA_PARTITION_NUM = 1500
+        self.summary_table = 'summary_2022_01'
+        self.ner_table = 'ner_2021_01'
 
     def split_to_partitions(self, df):
         permuted_indices = np.random.permutation(len(df))
@@ -32,10 +33,7 @@ class ScyllaAdapter:
     def write_summary(self, df, info):
         start = time.time()
         prepared_query = self.session.prepare(
-            '''
-                INSERT INTO summary_2021_01 (
-                    sentiment, created, country, tweet_id, ner_text) VALUES (?, ?, ?, ?, ?)
-            '''
+            'INSERT INTO summary_2021_12 (sentiment, created, country, tweet_id, ner_text) VALUES (?, ?, ?, ?, ?)'
         )
         executed = 0
         errors = []
@@ -47,7 +45,7 @@ class ScyllaAdapter:
                         prepared_query,
                         (
                             item.sentiment,
-                            datetime.strptime(item.created, '%a %b %d %X %z %Y'),
+                            item.created if item.created != 'none' else info.created,
                             item.country,
                             item.tweet_id,
                             item.ner_text if item.ner_text != 'none' else [],
@@ -61,23 +59,20 @@ class ScyllaAdapter:
             except Exception as e:
                 errors.append(f'session.execute(batch) error: {e}')
 
-        print(errors)
-        print(f'write time: {time.time() - start}, df: {df.shape[0]}, executed: {executed}, info: {info}.\n')
+        print(f'write time: {time.time() - start}, df: {df.shape[0]}, executed: {executed}, info: {info}.\n, errors: {errors}')
 
-    def write_only_ner(self, df, pid):
+    def write_ner(self, df, pid):
         start = time.time()
         prepared_query = self.session.prepare(
-            '''
-                INSERT INTO ner_2021_01 (ner_text, ner_label, created, tweet_id) VALUES (?, ?, ?, ?)
-            '''
+            'INSERT INTO ner_2021_08 (ner_text, ner_label, created, country, tweet_id) VALUES (?, ?, ?, ?, ?)'
         )
         executed = 0
         errors = []
-        for partition in self.split_to_partitions(df, self.CASSANDRA_PARTITION_NUM):
+        for partition in self.split_to_partitions(df):
             batch = BatchStatement()
             for index, item in partition.iterrows():
                 try:
-                    batch.add(prepared_query, (item.ner_text, item.ner_label, item.created, item.tweet_id))
+                    batch.add(prepared_query, (item.ner_text, item.ner_label, item.created, item.country, item.tweet_id))
                 except Exception as e:
                     errors.append(f'batch.add error: {e} - {item.tweet_id} - {item.created}')
             try:
@@ -86,5 +81,5 @@ class ScyllaAdapter:
             except Exception as e:
                 errors.append(f'session.execute(batch) error: {e}')
 
-        print(errors)
+        print(f'errors: {errors}')
         print(f'write time: {time.time() - start}, df: {df.shape[0]}, executed: {executed}, pid: {pid}.\n')

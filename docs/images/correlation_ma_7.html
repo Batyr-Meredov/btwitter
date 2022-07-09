@@ -1,0 +1,69 @@
+<html lang="en">
+   <head>
+        <meta charset="UTF-8">
+       <script type="text/javascript" data-lets-plot-script="library" src="https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v2.3.0/js-package/distr/lets-plot.min.js"></script>
+   </head>
+   <body>
+          <div id="lFzBsk"></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+       var plotSpec={
+"data":{
+"Todesfälle":[346.0,577.0,541.0,514.0,1135.0,255.0,125.0,523.0,835.0,792.0,1023.0,1051.0,266.0,206.0,1027.0,1017.0,1201.0,1778.0,1464.0,556.0,211.0,1330.0,1415.0,1541.0,2206.0,1737.0,640.0,314.0,1711.0,1426.0,2037.0,3000.0,1936.0,652.0,416.0,626.0,2076.0,2296.0,3218.0,2461.0,829.0,371.0,2166.0,1896.0,2744.0,3466.0,2448.0,984.0,392.0,2308.0,2444.0,2688.0,3294.0,2475.0,838.0,572.0,2266.0,2502.0,2620.0,2805.0],
+"Anzahl der Tweets":[5137.0,5534.0,5973.0,6090.0,5948.0,5209.0,4998.0,5266.0,6593.0,6336.0,6354.0,5215.0,4580.0,4028.0,3145.0,5217.0,5638.0,5104.0,5274.0,4754.0,4617.0,4747.0,4783.0,4502.0,4732.0,4667.0,4743.0,4433.0,4395.0,4139.0,4715.0,4690.0,3810.0,3554.0,3198.0,2996.0,3725.0,3848.0,4617.0,6158.0,3691.0,3165.0,4015.0,4356.0,4073.0,4040.0,4123.0,3094.0,3091.0,3478.0,3442.0,3138.0,3392.0,2746.0,2512.0,2376.0,3051.0,3269.0,3196.0,3181.0]
+},
+"mapping":{
+"x":"Todesfälle",
+"y":"Anzahl der Tweets"
+},
+"data_meta":{
+"series_annotations":[{
+"column":"date",
+"type":"datetime"
+}]
+},
+"ggtitle":{
+"text":"Korrelation zwischen USA Todesfälle und \n" +
+    " der negative Stimmung auf Twittter \n " +
+    "für August und September 2021 \n " +
+    "mit der Verwendung Moving Average"
+},
+"ggsize":{
+"width":500,
+"height":250
+},
+"theme":{
+"name":"classic",
+"legend_position":"right"
+},
+"kind":"plot",
+"scales":[{
+"aesthetic":"color",
+"low":"#abd9e9",
+"high":"#d7191c",
+"scale_mapper_kind":"color_gradient"
+},{
+"aesthetic":"fill",
+"low":"#abd9e9",
+"high":"#d7191c",
+"scale_mapper_kind":"color_gradient"
+}],
+"layers":[{
+"geom":"point",
+"mapping":{
+"color":"Anzahl der Tweets",
+"fill":"Anzahl der Tweets"
+},
+"data_meta":{
+},
+"shape":21,
+"size":3,
+"alpha":0.9,
+"data":{
+}
+}]
+};
+       var plotContainer = document.getElementById("lFzBsk");
+       LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
+   </script>
+   </body>
+</html>

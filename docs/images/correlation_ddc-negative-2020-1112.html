@@ -1,0 +1,68 @@
+<html lang="en">
+   <head>
+        <meta charset="UTF-8">
+       <script type="text/javascript" data-lets-plot-script="library" src="https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v2.3.0/js-package/distr/lets-plot.min.js"></script>
+   </head>
+   <body>
+          <div id="6E10GT"></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+       var plotSpec={
+"data":{
+"Todesfälle":[523.0,568.0,1563.0,1135.0,1167.0,1222.0,1092.0,588.0,787.0,1396.0,1384.0,1209.0,1176.0,1396.0,800.0,843.0,1700.0,1906.0,2009.0,1931.0,1704.0,1058.0,1101.0,2127.0,2204.0,1399.0,1622.0,1401.0,1082.0,1347.0,2584.0,2832.0,2600.0,2435.0,1440.0,1572.0,2551.0,3167.0,2989.0,2519.0,1681.0,1655.0,2971.0,3760.0,3364.0,2919.0,2843.0,1757.0,1840.0,3277.0,3368.0,2977.0,1597.0,1994.0,1458.0,1889.0,3592.0,3889.0,3296.0,2303.0,2620.0,1481.0,1951.0,3619.0,3915.0,4006.0,4170.0,3248.0,2120.0,1866.0,4334.0,3959.0,3810.0,3839.0,3615.0,2051.0,1613.0,2458.0,4415.0,4098.0,3770.0,3574.0,1891.0,1735.0,3865.0,3998.0,3789.0,3592.0,2816.0,1925.0],
+"Anzahl der Tweets":[6526.0,6246.0,5986.0,6135.0,6063.0,6676.0,8245.0,6943.0,6503.0,6555.0,7297.0,8089.0,9636.0,8155.0,8234.0,8091.0,8955.0,9384.0,10464.0,9799.0,9317.0,8586.0,7932.0,7974.0,8339.0,6949.0,5818.0,6059.0,6747.0,6570.0,7448.0,863.0,6560.0,8325.0,8301.0,7988.0,8962.0,8652.0,8558.0,7096.0,7367.0,6982.0,7050.0,7847.0,7296.0,8028.0,7141.0,6635.0,6829.0,7182.0,7095.0,5640.0,3738.0,4081.0,5793.0,5391.0,6116.0,7736.0,6748.0,5636.0,5426.0,5334.0,4251.0,5374.0,5854.0,4329.0,4221.0,3786.0,3556.0,3836.0,5100.0,4503.0,3631.0,3770.0,4354.0,4219.0,3924.0,4097.0,4261.0,4510.0,4713.0,4496.0,4049.0,4356.0,4389.0,4462.0,3966.0,3895.0,4274.0,4049.0]
+},
+"mapping":{
+"x":"Todesfälle",
+"y":"Anzahl der Tweets"
+},
+"data_meta":{
+"series_annotations":[{
+"column":"date",
+"type":"datetime"
+}]
+},
+"ggtitle":{
+"text":"Korrelation zwischen  der Sterblickeit \n" +
+    "in den USA und negative Twitter-Stimmung \n " +
+    "01.11.2020 - 31.01.2021"
+},
+"ggsize":{
+"width":500,
+"height":250
+},
+"theme":{
+"name":"classic",
+"legend_position":"right"
+},
+"kind":"plot",
+"scales":[{
+"aesthetic":"color",
+"low":"#abd9e9",
+"high":"#d7191c",
+"scale_mapper_kind":"color_gradient"
+},{
+"aesthetic":"fill",
+"low":"#abd9e9",
+"high":"#d7191c",
+"scale_mapper_kind":"color_gradient"
+}],
+"layers":[{
+"geom":"point",
+"mapping":{
+"color":"Anzahl der Tweets",
+"fill":"Anzahl der Tweets"
+},
+"data_meta":{
+},
+"shape":21,
+"size":3,
+"alpha":0.9,
+"data":{
+}
+}]
+};
+       var plotContainer = document.getElementById("6E10GT");
+       LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
+   </script>
+   </body>
+</html>

@@ -1,0 +1,69 @@
+<html lang="en">
+   <head>
+        <meta charset="UTF-8">
+       <script type="text/javascript" data-lets-plot-script="library" src="https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v2.3.0/js-package/distr/lets-plot.min.js"></script>
+   </head>
+   <body>
+          <div id="OCdv9t"></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+       var plotSpec={
+"data":{
+"Fallzahlen":[65002.0,73576.0,72545.0,191443.0,43891.0,44568.0,108360.0,97753.0,102446.0,109687.0,251895.0,63006.0,34876.0,159786.0,117800.0,154451.0,144085.0,226806.0,73067.0,46788.0,194355.0,150591.0,167601.0,155220.0,239074.0,92196.0,44202.0,208223.0,154461.0,178982.0,183770.0,238672.0,78888.0,52010.0,229211.0,179960.0,190516.0,179135.0,235442.0,85908.0,63502.0,93733.0,209168.0,176926.0,166417.0,242009.0,89129.0,48351.0,210775.0,145401.0,173250.0,158777.0,210860.0,74971.0,44870.0,171800.0,121736.0,131352.0,129167.0,174765.0,60495.0],
+"Anzahl der Tweets":[1340.0,1392.0,1554.0,1618.0,1622.0,1690.0,1488.0,1349.0,1430.0,1736.0,1746.0,1740.0,1541.0,1357.0,1103.0,1154.0,1866.0,1670.0,1539.0,1692.0,1478.0,1401.0,1606.0,1511.0,1456.0,1398.0,1402.0,1358.0,1164.0,1301.0,1277.0,1398.0,1490.0,1187.0,1177.0,1066.0,975.0,1097.0,1153.0,1433.0,1531.0,955.0,999.0,1128.0,1198.0,1264.0,1237.0,1240.0,1002.0,1007.0,1081.0,1122.0,1065.0,1091.0,1120.0,902.0,794.0,1020.0,1048.0,1025.0,985.0]
+},
+"mapping":{
+"x":"Fallzahlen",
+"y":"Anzahl der Tweets"
+},
+"data_meta":{
+"series_annotations":[{
+"column":"date",
+"type":"datetime"
+}]
+},
+"ggtitle":{
+"text":"Korrelation zwischen den Fallzahlen \n " +
+    "in den USA und der positive Stimmungen \n " +
+     "auf Twitter für August und September 2021 \n " +
+    " mit der Shift(5) Methode"
+},
+"ggsize":{
+"width":500,
+"height":250
+},
+"theme":{
+"name":"classic",
+"legend_position":"right"
+},
+"kind":"plot",
+"scales":[{
+"aesthetic":"color",
+"low":"#abd9e9",
+"high":"#d7191c",
+"scale_mapper_kind":"color_gradient"
+},{
+"aesthetic":"fill",
+"low":"#abd9e9",
+"high":"#d7191c",
+"scale_mapper_kind":"color_gradient"
+}],
+"layers":[{
+"geom":"point",
+"mapping":{
+"color":"Anzahl der Tweets",
+"fill":"Anzahl der Tweets"
+},
+"data_meta":{
+},
+"shape":21,
+"size":3,
+"alpha":0.9,
+"data":{
+}
+}]
+};
+       var plotContainer = document.getElementById("OCdv9t");
+       LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
+   </script>
+   </body>
+</html>

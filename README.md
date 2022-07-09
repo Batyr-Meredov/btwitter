@@ -39,7 +39,7 @@
       mkdir -p data/lopezbec/ner data/lopezbec/details data/lopezbec/sentiment
     ```
     ```bash
-      mkdir -p data/lopezbec/sentiment5
+      mkdir -p data/lopezbec/sentiment
     ```
 * download Summary_NER files
     ```bash
@@ -68,13 +68,13 @@ python  -m src.summary.indexing
 docker exec -it summary-node-1 cqlsh
 ```
 
-```sql
+```cassandraql
 use twitter;
 ```
 
 * select all tweets for 2021-01-01
 
-```sql
+```cassandraql
   SELECT sentiment, created, count(1)
   FROM summary_2021_01
   WHERE created = '2021-01-01'
@@ -92,7 +92,7 @@ use twitter;
 
 * select all tweets for 2021-01-01 and country = 'US'
 
-```sql
+```cassandraql
   SELECT sentiment, created, count(1)
   FROM summary_2021_01
   WHERE created = '2021-01-01'
@@ -111,7 +111,7 @@ use twitter;
 
 * select all tweets for 2021-01-01 and country = 'US'
 
-```sql
+```cassandraql
   SELECT sentiment, created, count(1)
   FROM summary_2021_01
   WHERE created = '2021-01-01'
@@ -150,7 +150,7 @@ use twitter;
 
 * select for negative tweets and country = 'US' and ner_text CONTAINS 'covid'
 
-```sql
+```cassandraql
  SELECT sentiment, created, count(1)
  FROM summary_2021_01
  WHERE sentiment = 'negative'

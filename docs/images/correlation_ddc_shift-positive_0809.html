@@ -1,0 +1,69 @@
+<html lang="en">
+   <head>
+        <meta charset="UTF-8">
+       <script type="text/javascript" data-lets-plot-script="library" src="https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v2.3.0/js-package/distr/lets-plot.min.js"></script>
+   </head>
+   <body>
+          <div id="M9l0Nb"></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+       var plotSpec={
+"data":{
+"Todesfälle":[455.0,378.0,332.0,886.0,176.0,226.0,350.0,593.0,546.0,504.0,1166.0,282.0,156.0,523.0,862.0,817.0,1036.0,1093.0,307.0,228.0,1040.0,1041.0,1210.0,1790.0,1505.0,610.0,250.0,1358.0,1488.0,1577.0,2240.0,1767.0,715.0,371.0,1749.0,1506.0,2098.0,3020.0,1983.0,724.0,522.0,700.0,2088.0,2355.0,3320.0,2503.0,914.0,434.0,2167.0,1936.0,2782.0,3519.0,2521.0,1089.0,457.0,2282.0,2483.0,2738.0,3332.0,2504.0,895.0],
+"Anzahl der Tweets":[1340.0,1392.0,1554.0,1618.0,1622.0,1690.0,1488.0,1349.0,1430.0,1736.0,1746.0,1740.0,1541.0,1357.0,1103.0,1154.0,1866.0,1670.0,1539.0,1692.0,1478.0,1401.0,1606.0,1511.0,1456.0,1398.0,1402.0,1358.0,1164.0,1301.0,1277.0,1398.0,1490.0,1187.0,1177.0,1066.0,975.0,1097.0,1153.0,1433.0,1531.0,955.0,999.0,1128.0,1198.0,1264.0,1237.0,1240.0,1002.0,1007.0,1081.0,1122.0,1065.0,1091.0,1120.0,902.0,794.0,1020.0,1048.0,1025.0,985.0]
+},
+"mapping":{
+"x":"Todesfälle",
+"y":"Anzahl der Tweets"
+},
+"data_meta":{
+"series_annotations":[{
+"column":"date",
+"type":"datetime"
+}]
+},
+"ggtitle":{
+"text":"Korrelation zwischen USA-Todesfälle und \n" +
+    "der positive Stimmungen auf Twitter \n" +
+    "für August und September 2021 \n " +
+    "mit der Verwendung der Shift(5) Methode"
+},
+"ggsize":{
+"width":500,
+"height":250
+},
+"theme":{
+"name":"classic",
+"legend_position":"right"
+},
+"kind":"plot",
+"scales":[{
+"aesthetic":"color",
+"low":"#abd9e9",
+"high":"#d7191c",
+"scale_mapper_kind":"color_gradient"
+},{
+"aesthetic":"fill",
+"low":"#abd9e9",
+"high":"#d7191c",
+"scale_mapper_kind":"color_gradient"
+}],
+"layers":[{
+"geom":"point",
+"mapping":{
+"color":"Anzahl der Tweets",
+"fill":"Anzahl der Tweets"
+},
+"data_meta":{
+},
+"shape":21,
+"size":3,
+"alpha":0.9,
+"data":{
+}
+}]
+};
+       var plotContainer = document.getElementById("M9l0Nb");
+       LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
+   </script>
+   </body>
+</html>
